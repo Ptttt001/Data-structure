@@ -72,24 +72,24 @@ graph中的一部分
 ## 程式表示graph
 
 ### array 
-![alt text](image.png)
+![alt text](image-1-1.png)
 #### 問題:
 稀疏矩陣，浪費空間
 space complexity:O(V^2)
 若是undirected graph，symmetric matrix
 ### adjacency list
-![alt text](image-1.png)
+![alt text](image-1-2.png)
 #### 優點:
 space complexity:O(V+E)，vertex數量+edge數量
 good for sparse
 
 #### inverse adjacency list
 與adjacency list相反，紀錄in-degree
-![alt text](image-3.png)
+![alt text](image-3-1.png)
 ##### 為甚麼需要
 使用adjacency list時，若要找in-degree，需要遍歷整個list
 ### one dimension array
-![alt text](image-2.png)
+![alt text](image-2-1.png)
 紀錄每個vertex的edge起始位置
 ex:
 1. vertex0指向9，9為起始位置，9開始存放vertex0的edge
@@ -99,7 +99,7 @@ ex:
 
 ### multilists
 在undirected graph中，使用adjacency list，則每個edge會被記錄兩次
-![alt text](image-4.png)
+![alt text](image-4-1.png)
 以edge base，紀錄每個edge的起始點與終點
 上方例子中有五個欄位
 1. 第二個欄位為edge的起點
@@ -118,7 +118,7 @@ ex:
 ##graph operation
 ### DFS
 深度優先搜尋
-![alt text](image-5.png)
+![alt text](image-5-1.png)
 由adjacency list中的第一個edge開始走，走到沒看過的vertext，跳去該vertext
 因此該範例的traversal順序為0,1,3,7,4,5,2,6
 不唯一，只要adjacency list中的edge順序不同，traversal順序就會不同
@@ -178,7 +178,30 @@ ex:
 3. 看連完後的所有vertex，找出可連接的最小edge
 
 ![alt text](image-11.png)
-31:00
+
+## biconnected component
+在一個connected graph中，若刪除一個vertex，graph仍然是connected，則稱為biconnected component，即沒有任何articulation point
+### articulation point
+若刪除該vertex，則graph會被分成兩個connected component
+![alt text](image-12.png)
+紅色點為articulation point
+### 使用DFS找出bioconnected component
+![alt text](image-13.png)
+右圖為DFS以3為起點，所構成的spinning tree
+虛線意思為原本graph有的edge
+#### back edge
+在spinning tree中，若有edge連接到ancestor，則稱為back edge
+#### low(w)
+將geaph變為spinning tree後，以
+w為root，以w為起點，透過**他的child**找出的最小的dfn值
+![alt text](image-14.png)
+![數學式](image-15.png)
+
+**dfn為在traersal時的順序**
+
+### 
+
+### 
 
 
 

@@ -52,7 +52,7 @@ hash function 相同
 
 
 example:
-![Untitled](Hash/Untitled.png)
+![Untitled](Untitled.png)
 
 hash function:依據英文數字
 
@@ -73,9 +73,9 @@ bucket:26
 #### dynamic hash function
 **Dynamic hashong**
 
-![Untitled](Hash/Untitled%207.png)
+![Untitled](Untitled%207.png)
 
-![Untitled](Hash/Untitled%208.png)
+![Untitled](Untitled%208.png)
 
 ##### trie
 
@@ -92,7 +92,7 @@ tire會有access time的問題
 ##### extemdable hash
 
 概念一樣，不需要traverse的方法，建立一個目錄
-![Untitled](Hash/Untitled%209.png)
+![Untitled](Untitled%209.png)
 
 ##### hashing  with directory
 
@@ -114,7 +114,7 @@ tire會有access time的問題
 
 ##### fold
 
-![Untitled](Hash/Untitled%201.png)
+![Untitled](Untitled%201.png)
 
 ###### shift folding
 
@@ -134,11 +134,11 @@ tire會有access time的問題
 
 開放其他空間(bucket)用
 
-![Untitled](Hash/Untitled%202.png)
+![Untitled](Untitled%202.png)
 
 搜索:往附近找
 
-![Untitled](Hash/Untitled%203.png)
+![Untitled](Untitled%203.png)
 
 #### collision resolution strategy
 **在open addressing條件下，該放在哪個bucket**
@@ -146,7 +146,7 @@ tire會有access time的問題
 ##### linear probing
 **一個linear function決定**
 
-![Untitled](Hash/Untitled%204.png)
+![Untitled](Untitled%204.png)
 
 i=0;取mod10，若新找到的bucket也滿了，i+=1，hash值+i再做一次
 
@@ -156,7 +156,7 @@ primary clustering→該方式會有資料聚集現像，且會花費多次找�
 
 **和linear probing差別在於使用i平方**
 
-![Untitled](Hash/Untitled%205.png)
+![Untitled](Untitled%205.png)
 
 ##### double hashing
 **再用另一個function hash一次**
@@ -165,7 +165,7 @@ primary clustering→該方式會有資料聚集現像，且會花費多次找�
 
 ### chaining ex:使用list存，可無限加。
 
-![Untitled](Hash/Untitled%206.png)
+![Untitled](Untitled%206.png)
 
 Average search length:計算該需搜尋幾次
 
