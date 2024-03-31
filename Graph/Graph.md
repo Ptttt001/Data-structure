@@ -4,7 +4,7 @@
 >graph表示方式有四種
 >
 
-![Untitled](Graph/Untitled.png)
+![Untitled](Untitled.png)
 
 若每個路徑僅能走一次，需要偶數個degree才能達成
 
@@ -20,27 +20,27 @@
 ### 有方向性:directed graph
 edge表示方式:
 
-![Untitled](Graph/Untitled%201.png)
+![Untitled](Untitled%201.png)
 
-![Untitled](Graph/Untitled%202.png)
+![Untitled](Untitled%202.png)
 
 ### 無方向性:undirected graph
 
 edge表示方式:
 
-![Untitled](Graph/Untitled%203.png)
+![Untitled](Untitled%203.png)
 
-![Untitled](Graph/Untitled%204.png)
+![Untitled](Untitled%204.png)
 
 ## graph限制
 
 ### 不會有vertex指回自己(v,v)
 
-![Untitled](Graph/Untitled%205.png)
+![Untitled](Untitled%205.png)
 
 ### 不會有相同指向的edge，若有稱multigraph
 
-![Untitled](Graph/Untitled%206.png)
+![Untitled](Untitled%206.png)
 
 ## terminlogy of graph
 
@@ -55,18 +55,20 @@ directed graph中，不會有cycle的圖
 
 ### connected graph
 每個vertex都有路徑可以連到其他vertex，**沒有孤立的vertex**
+
 ### strongly connected graph
 **directed graph**中，任意兩頂點**彼此之間存在路徑**可以互通，有一條路徑可以連到其他vertex
+
 ### complete graph
 每個vertex都有edge連到其他vertex
 #### edge數量
-##### directed graph
+1. directed graph
 n(n-1)
-##### undirected graph
+2. undirected graph
 n(n-1)/2
 ### sub graph
 graph中的一部分
-![alt text](Graph/image.png)
+![graph中的一部分](image.png)
 1,2,3,4皆為下圖的sub graph
 
 ## 程式表示graph
@@ -77,17 +79,20 @@ graph中的一部分
 稀疏矩陣，浪費空間
 space complexity:O(V^2)
 若是undirected graph，symmetric matrix
+
 ### adjacency list
+紀錄所有vertex的edge
 ![alt text](image-1-2.png)
 #### 優點:
 space complexity:O(V+E)，vertex數量+edge數量
-good for sparse
+**good for sparse**
 
-#### inverse adjacency list
-與adjacency list相反，紀錄in-degree
+### inverse adjacency list
+與adjacency list相反，紀錄in-degree(指向該vertex的edge)
 ![alt text](image-3-1.png)
-##### 為甚麼需要
+#### 為甚麼需要
 使用adjacency list時，若要找in-degree，需要遍歷整個list
+
 ### one dimension array
 ![alt text](image-2-1.png)
 紀錄每個vertex的edge起始位置
@@ -95,7 +100,7 @@ ex:
 1. vertex0指向9，9為起始位置，9開始存放vertex0的edge
 2. vertex1指向11，11為起始位置，11開始存放vertex1的edge
 #### 缺點:
-刪除新增vertex時，需要重新調整
+刪除新增vertex時，需要shift整個array
 
 ### multilists
 在undirected graph中，使用adjacency list，則每個edge會被記錄兩次
@@ -109,13 +114,16 @@ ex:
 #### node數量為edge數量
 >注意 adjacency list 與adjacency multilist的差別
 ## weighted edges
+### Network
 若edge有weight，稱nework
->補充
->google map中，整個map為一graph，每個路口為vertext
->每條路有單行雙行，為edge，引此graph為directed graph
->道路cost為距離
->找出路徑就是shortest path問題
-##graph operation
+
+>**補充:**
+> 1. google map中，整個map為一graph
+> 2. 每個路口為vertext，每條路有單行雙行，為edge，因此是directed graph
+> 3. 道路cost為距離
+> 4. 找出路徑就是shortest path問題
+
+## graph operation
 ### DFS
 深度優先搜尋
 ![alt text](image-5-1.png)
@@ -123,33 +131,35 @@ ex:
 因此該範例的traversal順序為0,1,3,7,4,5,2,6
 不唯一，只要adjacency list中的edge順序不同，traversal順序就會不同
 #### analysis DFS
-##### 若是adjacency list
+1. 若是adjacency list
 time complexity:O(e)
-##### 若是adjacency matrix
+2. 若是adjacency matrix
 time complexity:O(n^2)
-##### 城市實現traversal
+#### 程式實現traversal
 1. 使用stack
 2. 使用recursive
 ### BFS
 廣度優先搜尋
 level order traversal
-BFS algorithm:use queue
-#### 使用queue程式實現
+#### 程式實現traversal
 1. 使用queue
 2. 使用recursive
 ## spanning tree
 spanning tree:為一graph的sub graph，且頂點一樣，使用最小的edge數量連接所有vertex
+
 ### minimum cost spanning tree(MCST)
 找出spanning tree中，edge的cost或weight總和最小的spanning tree，稱為minimum cost spanning tree
->**定義:**is a spanning tree of least cost
+> 定義 : is a spanning tree of least cost
 #### edge數量
 n-1
 ![alt text](image-6.png)
 ###DFS與BFS spanning tree
 ![alt text](image-7.png)
-##### greedy algorithm
+
+#### greedy algorithm
 greedy algorithm不一定能找出最佳解，不保證為optimal。
-###### Kruskal's algorithm
+
+##### Kruskal's algorithm
 **以edge為出發點**
 1. 每次找出最小的edge
 2. 不要形成cycle
@@ -161,7 +171,7 @@ ex:
 
 ![alt text](image-10.png)
 
-###### Prim's algorithm
+##### Prim's algorithm
 **以vertex為出發點**
 1. 先選一個最小的edge，得到兩個vertex
 2. 由這兩個vertex找出最小的edge
@@ -171,10 +181,10 @@ ex:
 ![alt text](image-8.png)
 > implement:priority queue
 > 💡如何detect cycle?
-###### Sollin's algorithm
+##### Sollin's algorithm
 **結合Prim's與Kruskal's，以頂點出發，選邊**
-1. 每次由1~6的vertex找出最小的edge，連起來
-2. 若該vertex的最小edge已經被選過，則跳過(如vertex3)
+1. 由1~6的vertex找出最小的edge，連起來
+2. 若該vertex的最小edge已經被選過，則跳過(如vertex3,vertex5,vertex6)
 3. 看連完後的所有vertex，找出可連接的最小edge
 
 ![alt text](image-11.png)
@@ -198,10 +208,22 @@ w為root，以w為起點，透過**他的child**找出的最小的dfn值
 ![數學式](image-15.png)
 
 **dfn為在traersal時的順序**
+#### 如何找出articulation point
+![alt text](image-16.png)
+計算low值，若low值大於等於dfn值，則為articulation point，**因為沒有其他low低於該點**，因此刪除該點，graph會被分成兩個connected component
+![alt text](image-17.png)
+**總結步驟:**
+1. 使用DFS traversal，決定dfn值
+2. 紀錄back edge
+3. 決定low值(實際由tree最下面先算)
+4. 判斷low值是否大於等於dfn值
+5. 若是，則為articulation point
+> 1. 若算出articulation point，如何分辨bioconnected component?
+> 2. 如何找 maxinum biconnected component?
 
-### 
 
-### 
+
+
 
 
 
