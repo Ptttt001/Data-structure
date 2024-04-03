@@ -220,6 +220,75 @@ w為root，以w為起點，透過**他的child**找出的最小的dfn值
 5. 若是，則為articulation point
 > 1. 若算出articulation point，如何分辨bioconnected component?
 > 2. 如何找 maxinum biconnected component?
+## shortest path
+
+### dijkstra's algorithm
+**greedy algorithm**
+![alt text](image-18.png)
+![alt text](image-19.png)
+1. Initial:從4出發，紀錄可以到達的vertex距離
+2. 第一輪:選最小距離的vertex，紀錄新的距離，若有更小的距離，則更新數值
+3. 第二輪:繼續選cost最小的vertex，輪迴直到抵達終點
+#### 限制
+為什麼不是optimal?
+> ![alt text](image-20.png)
+> 若是有**負數的edge**，則無法使用dijkstra's algorithm
+> 若是**存在cycle**，則無法使用dijkstra's algorithm
+### Bellman-Ford algorithm
+**optimal algorithm**
+![alt text](image-21.png)
+1. 回合一:k=1，只能走一步時到其他vertex的cost
+2. 回合二:k=2，走兩步時到其他vertex的cost
+3. 若新的cost小於原本的cost，則更新
+> 記下前一個回合部分，沒懂
+### all pair shortest path
+![alt text](image-22.png)
+![alt text](image-23.png)
+最多會有n-1個round
+A^n為可經過n個vertex的cost
+## AOV network
+vetex表示activity
+Activity on vertex network
+![alt text](image-24.png)
+1. 以vertex表示activity
+### topological order
+將AOV network排序為一個sequence
+![alt text](image-25.png)
+在一個AOV network中，若有一個Vertex沒有其他vertex指入(in-degree=0)，則可被output，依照這個規則，可以列出topological order
+### 使用adjacency list inplement
+![alt text](image-26.png)
+加入count，紀錄in-degree
+作法:找出目前count=0的vertex，將該list中的vertex的count-1
+### 使用inverse adjacency list inplement
+
+## AOE network
+Activity on edge network
+edge表示activity
+![alt text](image-27.png)
+### 使用adjacency list inplement
+多一個欄位，紀錄duration
+![alt text](image-28.png)
+在程式中做ee
+![alt text](image-29.png)
+1.initial:找出in-degree=0的vertex，並將其ee設為0
+2.將該vertex push進stack
+3.將該vertex的out degree-1
+4.新回合:若該vertex的out degree=0，則pop出stack，並將該vertex的ee設為max(ee)+duration
+LF:latest finish time
+![alt text](image-30.png)
+**選最小值**
+### critical path
+LE-EE=0(early start time=late start time)
+> 1. 如何找出critical path?
+> critical path是否會斷掉?
+
+
+
+
+
+
+
+
 
 
 
