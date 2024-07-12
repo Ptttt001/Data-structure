@@ -111,15 +111,21 @@ parent:i/2
 > 給一個inorder string ，是否可以建立唯一的binary tree?
 > 不能
 
-### boolean expression
+### calculus expression
 
-如何讓電腦可以判斷boolean expression?
-1. 使用stack，將運算子放入stack，遇到運算元就pop出來
+如何讓電腦可以判斷calculus expression?
+1. 使用stack，將運算子放入stack，遇到運算元就pop出來(postfix notation)
 2. 使用tree，將tree轉換成postorder
+
 ![alt text](image-12.png)
+
+> Q : **如何將calculus expression轉換成tree?**
+> 
+> A : ??
 
 tree中必須包含，left child , right child , value , data 
 ![alt text](image-13.png)
+
 方式:
 
 有n個變數，2^n種可能，將2^n種組合放入tree中嘗試，
@@ -133,11 +139,87 @@ postorder步驟:
    1. 遇到not
         > 將右子樹做not，結果丟到value。
    2. 遇到and
-        > 將左子樹和右子樹做and，結果丟到value。
+        > 將左子樹value和右子樹value做and，結果丟到value。
    3. 遇到or
-        > 將左子樹和右子樹做or，結果丟到value。
+        > 將左子樹value和右子樹value做or，結果丟到value。
    4. 遇到true
    5. 遇到false
+
+## thread binary tree
+leaf node的left child and right child會被浪費，利用這些空間，將leaf node的left child指向前一個節點，right child指向下一個節點。
+
+![alt text](image-16.png)
+
+### 新增欄位
+新增:leftThread, rightThread ，做boolean標記，判斷是否為thread
+![alt text](image-17.png) 
+![alt text](image-18.png)
+
+### inorder traversal作法
+> how??
+![alt text](image-19.png)
+
+### 缺點
+沒啥用
+insert,delete,search都很麻煩
+
+## binary search tree
+特質:左子樹的值都比root小，右子樹的值都比root大
+### search
+1. 從root開始
+2. 若比root小，往左走
+3. 若比root大，往右走
+4. 直到找到或是null
+![alt text](image-33.png)
+
+### the k th largest element
+找出第k大的元素，意即由小到大排序，第k個元素。
+#### 實現方式
+在node中新增一個欄位紀錄leftsize，紀錄左子樹的大小+1(自己)的大小。
+![alt text](image-34.png)
+#### 步驟
+1. 和當下node比較，若相等，回傳
+2. 若k小於node.leftsize，並往左走
+3. 若k大於node.leftsize，k減node.leftsize，並往右走
+> 怎麼決定leftsize?
+### Insert
+![alt text](image-35.png)
+### delete
+簡單情況，只有一個child，直接刪除，child取代
+![alt text](image-36.png)
+複雜情況，有兩個child，找到左子樹的最大值(右子樹最小值也可)，取代
+![alt text](image-37.png)
+
+### winner tree
+> 為何要有winner tree ，當數字量極大，無法同時在memory，但需要排序時，winner tree可以幫助我們快速找到最大值。
+![alt text](image-38.png)
+![alt text](image-39.png)
+![alt text](image-40.png)
+### loser tree
+![alt text](image-41.png)
+### forest
+![alt text](image-42.png)
+### set
+![alt text](image-43.png)
+#### union
+哪一方底下的node越多，就當作root，另一方歸順。
+![alt text](image-44.png)
+![alt text](image-46.png)
+#### 表示為array
+![alt text](image-45.png)
+> 使用array表示與pointer表示的優缺點為何
+#### collapsing
+根據quesy頻繁程度對tree做調整，調至距離root較近的地方。
+![alt text](image-47.png)
+
+### inorder preorder posprder
+#### 給定inorder順序，所建構tree不唯一
+#### 給定inorder preorder順序，所建構tree是唯一
+
+
+
+
+
 
 
 
