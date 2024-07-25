@@ -13,6 +13,18 @@
 
 ![alt text](image-5.png)
 
+## attach
+從頭開始找，找到最後一個node，將最後一個node的next指向新的node
+![alt text](image-6.png)
+
+## inverse
+會需要三個pointer，一個指向前一個node，一個指向當前node，一個指向下一個node，由頭開始改變node指向
+![alt text](image-7.png)
+
+## connecting two list
+走到第一個list的最後一個node，將最後一個node的next指向第二個list的第一個node
+![alt text](image-8.png)
+
 
 ## code
 ![alt text](image-2.png)
@@ -20,6 +32,26 @@
 ![alt text](image-3.png)
 1. x=y會將y所指的記憶體位置指給x，x所指的記憶體位置會被釋放。
 2. *x=*y，將y所指的記憶體位置內的值指給x所指的記憶體位置。x和y所指的記憶體位置不會改變。但內容會是一樣的。
+## circular list
+需要記得first
+![alt text](image-9.png)
+
+## linked list stack queue
+![alt text](image-10.png)
+
+## 多項式
+一個欄位記錄係數，一個欄位記錄次方
+優點:資料sparse時，可以節省記憶體
+![alt text](image-11.png)
+
+## node 回收
+可以使用一個Linked list來記錄不需要使用的node的記憶體位置。
+若需回收多項可以使用以下方法，先將要回收的List的最後一個node的next指向first，形成一個circle，再重新指定first
+![alt text](image-12.png)
+
+##
+![alt text](image-13.png)
+
 
 
 
