@@ -49,8 +49,19 @@
 若需回收多項可以使用以下方法，先將要回收的List的最後一個node的next指向first，形成一個circle，再重新指定first
 ![alt text](image-12.png)
 
-##
+## equivalence relation
+![alt text](image-14.png)
+
 ![alt text](image-13.png)
+
+### code
+1. 使用一個array來記錄所有可能的node
+   ![alt text](image-15.png)
+2. 使用list方式存取有關的node，如上圖
+3. 建立完所有relation後，需要再用一個array來紀錄某個node是否已經被拜訪過
+4. 從頭開始traverse array，每讀取一個後見檢查該node是否已經被拜訪過，若沒有則將該node加入stack，後續再從stack中取出拜訪。
+   ![alt text](image-16.png)
+
 
 
 
