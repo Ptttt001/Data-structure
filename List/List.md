@@ -62,6 +62,18 @@
 4. 從頭開始traverse array，每讀取一個後見檢查該node是否已經被拜訪過，若沒有則將該node加入stack，後續再從stack中取出拜訪。
    ![alt text](image-16.png)
 
+## doubly linked list
+會有一個head node ，其left link指向left link最左邊的node，right link指向right link最右邊的node
+![alt text](image-17.png)
+![alt text](image-18.png)
+### insert
+先指好新增的node，在改前後兩個node的指向
+![alt text](image-20.png)
+### delete
+
+![alt text](image-21.png)
+
+
 
 
 
